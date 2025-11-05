@@ -56,19 +56,7 @@ At its core, the Bandgap Reference circuit works as follows:
 - **Analog-to-Digital Converters (ADCs)**  
 - **Digital-to-Analog Converters (DACs)**
 
-## 📚 Contents
 
-
-1. [Bandgap Reference (BGR) Introduction](#2-bandgap-reference-bgr-introduction)  
-   1.1 [BGR Principle](#21-bgr-principle)  
-   1.2 [Types of BGR](#22-types-of-bgr)  
-   1.3 [Self-Biased Current Mirror Based BGR](#23-self-biased-current-mirror-based-bgr)
-
-2. [Design and Pre-Layout Simulation](#3-design-and-pre-layout-simulation)
-
-3. [Layout Design](#4-layout-design)
-
-4. [LVS and Post-Layout Simulation](#5-lvs-and-post-layout-simulation)
 
 
 ## 1. BGR Introduction
@@ -79,7 +67,7 @@ The **Bandgap Reference (BGR)** circuit generates a temperature-independent refe
 
 The basic operation principle of a BGR circuit is to **sum a voltage with a negative temperature coefficient (CTAT)** and another with a **positive temperature coefficient (PTAT)** such that their variations cancel each other.
 
-<img width="937" height="571" alt="Screenshot 2025-10-31 114203" src="https://github.com/user-attachments/assets/fd8e82f0-ac14-4d01-8c6c-c3544f9b369a" />
+<img width="937" height="571" alt="Ctat and Ptab symbol.png" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/4bd96fb5ed71028997fc5cb9358510f9ef2c09cd/pics/Ctat%20and%20Ptab%20symbol.png" />
 
 ---
 
