@@ -923,6 +923,6 @@ The layout is organized for optimal matching, symmetry, and noise immunity. Each
 
 ####  Layout Visualization:
 The image below shows the **complete top-level BGR layout**, where all components are interconnected and verified for DRC cleanliness.
-<img width="1163" height="774" alt="Screenshot 2025-10-31 003200" src="https://github.com/user-attachments/assets/f8426b27-d2f7-4dee-bfe2-d1644d647747" />
+<img width="1163" height="774" alt="top" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/fb8a5d9c6791a77ece683f55d6c34babbd3e9fd2/pics/results/top.png" />
  *This top-level layout ensures electrical symmetry, thermal stability, and process tolerance for a robust and accurate Bandgap Reference circuit.*
 
