@@ -38,7 +38,7 @@ At its core, the Bandgap Reference circuit works as follows:
 
 
    
-<img width="698" height="268" alt="Screenshot 2025-10-31 095749" src="https://github.com/user-attachments/assets/29a07377-a79a-483f-ac21-dac1115c8883" />
+<img width="698" height="268" alt="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/tree/main" />
 
 ## ⚙️ Features of Bandgap Reference (BGR)
 
