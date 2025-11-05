@@ -871,19 +871,19 @@ The layout emphasizes **device matching**, **isolation**, and **robustness again
 
 ###  Design of PNP10
 We have created the layout by putting all the PNPs together, with appropriate matching, and used dummies to enhance noise performance.
-<img width="1196" height="690" alt="Screenshot 2025-10-31 003055" src="https://github.com/user-attachments/assets/e20f8fd8-f41c-48ee-bada-b260c337d161" />
+<img width="1196" height="690" alt="pnp10" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/0472ad8b2a3a13e316923d9f10820049e1a99410/pics/results/pnp10.png" />
 
-### 4.2.5 Design of STARTERNFET
+###  Design of STARTERNFET
 We placed the the two w=1, l=7 NFETs together with a guardring to desingn the STATRTERNFET.
-<img width="962" height="315" alt="Screenshot 2025-10-31 182922" src="https://github.com/user-attachments/assets/646c5788-3ab0-45b7-9525-07e40c1bd7e6" />
+<img width="962" height="315" alt="starternfet" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/0472ad8b2a3a13e316923d9f10820049e1a99410/pics/results/starnet.png" />
 
-### 4.4 TOP LEVEL DESIGN
+###  TOP LEVEL DESIGN
 The **top-level layout** integrates all the sub-blocks of the Bandgap Reference (BGR) circuit — including NFETs, PFETs, resistor bank, BJT, and the startup circuit — into a single unified layout using **Magic VLSI**.
 
-#### 🧩 Layout Overview:
+####  Layout Overview:
 The layout is organized for optimal matching, symmetry, and noise immunity. Each functional block is carefully placed to minimize parasitic effects and ensure consistent temperature behavior.
 
-#### ⚙️ Key Components:
+####  Key Components:
 1. **NFET Block (Bottom Section):**
    - Contains all NMOS transistors arranged in a **common centroid** configuration.
    - Includes dummy devices and a guard ring for isolation and matching.
@@ -912,7 +912,7 @@ The layout is organized for optimal matching, symmetry, and noise immunity. Each
    - Full perimeter **p+ guard ring** implemented for substrate noise isolation.
    - Ensures reliable and low-noise reference operation.
 
-#### 🧾 Layout Details:
+####  Layout Details:
 | Parameter | Value / Description |
 |------------|---------------------|
 | Tool Used | Magic VLSI |
@@ -921,11 +921,8 @@ The layout is organized for optimal matching, symmetry, and noise immunity. Each
 | File Name | `bgr_top.mag` |
 | Layout Dimensions | ~85 µm × 73 µm |
 
-#### 🖼️ Layout Visualization:
+####  Layout Visualization:
 The image below shows the **complete top-level BGR layout**, where all components are interconnected and verified for DRC cleanliness.
 <img width="1163" height="774" alt="Screenshot 2025-10-31 003200" src="https://github.com/user-attachments/assets/f8426b27-d2f7-4dee-bfe2-d1644d647747" />
-💡 *This top-level layout ensures electrical symmetry, thermal stability, and process tolerance for a robust and accurate Bandgap Reference circuit.*
+ *This top-level layout ensures electrical symmetry, thermal stability, and process tolerance for a robust and accurate Bandgap Reference circuit.*
 
-## 5 LVS AND POSTLAYOUT STIMULATION
-<img width="1145" height="452" alt="Screenshot 2025-10-31 004007" src="https://github.com/user-attachments/assets/2ef1452c-77cc-42d6-a90c-89f782e5b1d0" />
-<img width="942" height="705" alt="Screenshot 2025-10-31 004154" src="https://github.com/user-attachments/assets/ab5dfb95-d7f3-47c6-8e0f-69409b696b6d" />
