@@ -71,7 +71,7 @@ The basic operation principle of a BGR circuit is to **sum a voltage with a nega
 
 ---
 
-#### 🧩 Key Concepts
+####  Key Concepts
 
 - **CTAT (Complementary to Absolute Temperature):**  
   A voltage that **decreases** as temperature **increases**.  
@@ -84,15 +84,14 @@ The basic operation principle of a BGR circuit is to **sum a voltage with a nega
 
 ---
 
-#### ⚙️ Principle of Operation
+####  Principle of Operation
 
 The BGR circuit operates by **adding** the CTAT and PTAT voltages in proper proportion so that the resulting voltage remains constant over temperature.
 ####  1.1.1 CTAT VOLTAGE GENERATION
 Semiconductor diodes typically exhibit CTAT (Complementary to Absolute Temperature) behavior. When a constant current flows through a forward-biased diode, an increase in temperature causes the voltage across the diode to decrease. Experimentally, the rate of decrease of the diode’s forward voltage with temperature is approximately –2 mV/°C.
-<img width="825" height="295" alt="Screenshot 2025-10-31 114812" src="https://github.com/user-attachments/assets/37ece2d7-02f6-4462-9eb4-e0d2c31d0e94" />
+<img width="825" height="295" alt="Ctat_voltage_refrence.png" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/da134f785f6b11f14e572c1e48f8ba0d185e4295/pics/Ctat_voltage_refrence.png" />
 
 ####  1.1.2 PTAT VOLTAGE GENERATION
-<img width="328" height="627" alt="Screenshot 2025-10-31 115134" src="https://github.com/user-attachments/assets/cde662c9-566f-4728-8542-b3e8e4a2aec4" />
 
 From the diode current equation, it can be observed that the diode voltage consists of two main temperature-dependent components:
 
@@ -105,8 +104,6 @@ Since Iₛ appears in the denominator of the logarithmic term (ln(I₀/Iₛ)), a
 Therefore, to design a PTAT (Proportional to Absolute Temperature) voltage generation circuit, we need a method to isolate the Vₜ component from the Iₛ dependence.
 
 The following approach describes how this separation can be achieved.
-
-<img width="452" height="412" alt="Screenshot 2025-10-31 115401" src="https://github.com/user-attachments/assets/d22c07fa-9154-4592-a5df-ccbc76e92de8" />
 
 In the above circuit same amount of current I is flowing in both the branches. So the node voltage A and B are going to be same V. Now in the B branch if we substract V1 from V, we get Vt independent of Is.
 
