@@ -107,7 +107,6 @@ The following approach describes how this separation can be achieved.
 
 In the above circuit same amount of current I is flowing in both the branches. So the node voltage A and B are going to be same V. Now in the B branch if we substract V1 from V, we get Vt independent of Is.
 
-<img width="640" height="383" alt="Screenshot 2025-10-31 115505" src="https://github.com/user-attachments/assets/8257068f-df17-4cad-b717-eaf2363d28c0" />
 
 V= Combined Voltage across R1 and Q2 (CTAT in nature but less sloppy)
 V1= Voltage across Q2 (CTAT in nature but more sloppy)
@@ -116,7 +115,8 @@ V-V1= Voltage across R1 (PTAT in nature)
 From the above analysis, it is evident that the voltage difference (V – V₁) exhibits a PTAT (Proportional to Absolute Temperature) behavior. However, its slope is relatively small compared to the CTAT (Complementary to Absolute Temperature) characteristic of a diode.
 
 To enhance the PTAT slope, multiple BJTs configured as diodes can be used in parallel. This reduces the current flowing through each individual diode, which in turn increases the slope of the (V – V₁) characteristic, thereby improving the PTAT response.
-<img width="1002" height="507" alt="Screenshot 2025-10-31 115754" src="https://github.com/user-attachments/assets/d3e2de54-c961-4d9c-a93e-421788587f0b" />
+<img width="640" height="383" alt="ptat voltage gen formula1" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/6ec034f752200cbdf32881777b04cb02ac25fc25/pics/ptat%20voltage%20gen%20formula1.png" />
+
 
 
 
@@ -128,7 +128,7 @@ To enhance the PTAT slope, multiple BJTs configured as diodes can be used in par
 
 ---
 
-📘 *In simple terms, the BGR circuit uses one voltage that decreases with temperature and another that increases with temperature — when added in the right ratio, the overall result stays constant.*
+ *In simple terms, the BGR circuit uses one voltage that decreases with temperature and another that increases with temperature — when added in the right ratio, the overall result stays constant.*
 
 ### 1.2 Types of Bandgap Reference (BGR)
 
@@ -136,7 +136,7 @@ The **Bandgap Reference (BGR)** circuit can be classified in different ways depe
 
 ---
 
-#### 🧩 Architecture-wise Classification
+####  Architecture-wise Classification
 
 Based on the circuit implementation approach, BGR circuits are commonly designed using:
 
@@ -152,7 +152,7 @@ Based on the circuit implementation approach, BGR circuits are commonly designed
 
 ---
 
-#### ⚙️ Application-wise Classification
+####  Application-wise Classification
 
 Depending on design goals and target specifications, BGR circuits can be categorized as:
 
@@ -173,7 +173,7 @@ The **Self-Biased Current Mirror Based Bandgap Reference (BGR)** circuit is comp
 
 ---
 
-#### 🧩 Main Components
+####  Main Components
 
 1. **CTAT Voltage Generation Circuit**  
    Produces a voltage that decreases with increasing temperature.
@@ -188,13 +188,8 @@ The **Self-Biased Current Mirror Based Bandgap Reference (BGR)** circuit is comp
    Combines the PTAT and CTAT voltages to generate a constant reference voltage.
 
 5. **Start-Up Circuit**  
-### 1.3.1 CTAT Voltage Generation Circuit
-<img width="222" height="292" alt="Screenshot 2025-10-31 120511" src="https://github.com/user-attachments/assets/f81c739d-d139-4442-9e03-85e1de35a908" />
 
-### 1.3.2 PTAT Voltage Generation Circuit
-<img width="487" height="488" alt="Screenshot 2025-10-31 120612" src="https://github.com/user-attachments/assets/03a0037b-3e24-4529-837d-b01bb89097ca" />
-
-### 1.3.3 Self-Biased Current Mirror Circuit
+### 1.3.1 Self-Biased Current Mirror Circuit
 
 The **Self-Biased Current Mirror** is a special type of current mirror that does **not require any external biasing source**.  
 Instead, it **automatically establishes its own bias current** through internal feedback, achieving a stable operating point without relying on an external reference.
@@ -206,9 +201,11 @@ This is typically achieved using **transistor feedback loops**, where one branch
 
 The circuit adjusts itself until the **voltages and currents stabilize** at a desired value — a state known as **self-biasing equilibrium**.  
 This eliminates the need for an external current reference, making the design **compact, power-efficient, and self-sufficient**.
-<img width="447" height="376" alt="Screenshot 2025-10-31 120810" src="https://github.com/user-attachments/assets/1d49e411-6297-44c1-a7b0-9ba2fd790ab9" />
+
+<img width="447" height="376" alt="current mirror crt" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/3f86218091d99f0077bcf6940e3a00a25be8aeb6/pics/current%20mirror%20crt.png" />
+
 ---
-### 1.3.4 Reference Branch Circuit
+### 1.3.2 Reference Branch Circuit
 
 The **Reference Branch Circuit** is the core part of the Bandgap Reference (BGR) that performs the **addition of CTAT and PTAT voltages** to produce the final **constant reference voltage**.
 
@@ -224,7 +221,8 @@ However, the **slope of the PTAT voltage** is much smaller compared to that of t
 To balance these effects and achieve temperature independence, the **resistance value is increased** — since the current is constant, a higher resistance increases the voltage drop proportionally.
 As a result, the total output voltage across the resistor becomes the **sum of the PTAT and CTAT components**, yielding a **temperature-stable reference voltage**.
 
-<img width="168" height="487" alt="Screenshot 2025-10-31 122920" src="https://github.com/user-attachments/assets/77e86414-5d1f-42a8-8b0f-2a0c96c72d2b" />
+
+
 ---
 
 ### 1.3.5 Start-up Circuit
@@ -242,11 +240,12 @@ This small perturbation shifts the mirror out of the zero-current equilibrium po
 
 Once the circuit begins to conduct, the **self-biasing mechanism** of the current mirror takes over and automatically stabilizes the current to its desired operating value.
 
-<img width="652" height="548" alt="Screenshot 2025-10-31 123141" src="https://github.com/user-attachments/assets/0367290b-ed4e-469e-bb0e-2898c3b3a790" />
+
 
 ### 1.3.6 Complete BGR Circuit
 
 By combining all the previously discussed building blocks, we can construct the **Complete Bandgap Reference (BGR) Circuit**.
+<img width="940" height="612" alt="complete BGR" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/284eff7aac6c6604e194f354c6edd10a1b684e97/pics/complete%20BGR.png" />
 
 ---
 
@@ -270,7 +269,7 @@ The complete BGR circuit integrates the following components:
 
 Together, these components form a **fully functional Bandgap Reference circuit**, producing a **constant output voltage (~1.2 V)** that remains stable over variations in **temperature, supply voltage, and load conditions**.
 
-<img width="940" height="612" alt="Screenshot 2025-10-31 123818" src="https://github.com/user-attachments/assets/dc1935a4-7a6e-4256-a452-1da815851cf2" />
+
 
 ####  Advantages of SBCM BGR
 
@@ -292,7 +291,7 @@ Before designing the complete circuit, we must first define the **design require
 
 ---
 
-### 3.1 Design Requirements
+### 2.1 Design Requirements
 
 | Parameter | Specification |
 |------------|----------------|
@@ -305,7 +304,7 @@ Before designing the complete circuit, we must first define the **design require
 
 ---
 
-### 3.2 Device Data Sheet
+### 2.2 Device Data Sheet
 
 #### 1. MOSFET
 
@@ -412,175 +411,56 @@ Resistor implementation: 16 in series and 2 in parallel (2 + 2 + … + 2 + (2‖
 
 ---
 ### 3.3.1 Final Circuit
-<img width="1027" height="647" alt="Screenshot 2025-10-31 144626" src="https://github.com/user-attachments/assets/bcb02bda-5746-41d8-a6f6-3e4952a4ed85" />
-
-### 3.4 Writing Spice netlist and Pre-layout simulation
-
-#### Steps to write a netlist
-
-1. Create a file with `.sp` extension, open with any editor like `gvim` / `vim` / `nano`.
-2. The 1st line of the Spice netlist is by default a comment line.
-3. To write a valid netlist we must include the library file (with absolute path) and mention the corner name (tt, ff or ss).
-
-<img width="712" height="487" alt="Screenshot 2025-10-31 145512" src="https://github.com/user-attachments/assets/f2c4606a-b998-4c49-b491-bb91ff42a173" />
-## 🔍 Netlist Explanation (Sky130 BGR Subcircuit)
-
-### 1️⃣ Global and Temperature Setup
-- `.global vdd gnd` → Declares **VDD** and **GND** as global nodes, accessible throughout the design.  
-- `.temp 27` → Sets the **simulation temperature** to **27°C (room temperature)**.
-
----
-
-### 2️⃣ Voltage-Controlled Voltage Source (VCVS)
-```spice
-*** vcvs definition
-e1 ra1 qp1 net2 gnd gain=1000
-````
-e1 defines a VCVS (Voltage-Controlled Voltage Source).
-
-Input nodes: qp1 and net2
-
-Output nodes: ra1 and gnd
-
-gain=1000 → Output voltage = 1000 × (V(qp1) - V(net2))
-
-Used for amplification or feedback control in analog reference circuits.
-### 3️⃣ MOSFET Definition (PMOS Devices)
-```spice
-*** mosfet definition
-xmp1 q1 net2 vdd vdd sky130_fd_pr__pfet_01v8_lvt l=2 w=5 m=4
-xmp2 q2 net2 vdd vdd sky130_fd_pr__pfet_01v8_lvt l=2 w=5 m=4
-```
-xmp1, xmp2 are PMOS transistors used in bias or mirror configurations.
-
-Model: sky130_fd_pr__pfet_01v8_lvt → 1.8V Low-Threshold PMOS (from Sky130 PDK).
-
-Node order: Drain → Gate → Source → Bulk
-
-Parameters:
-
-l=2 → Channel Length = 2µm
-
-w=5 → Channel Width = 5µm
-
-m=4 → 4 parallel transistors for higher drive strength and better matching.
-
-Both transistors share the same gate (net2) to form a current mirror or load pair.
-
-### 4️⃣ Resistor Definition
-```spice
-**resistor definition
-xra ra1 qp2 gnd sky130_fd_pr__res_high_po_1p41 l=30
-```
-xra defines a high-poly resistor using Sky130 PDK.
-
-Model: sky130_fd_pr__res_high_po_1p41 → High-Resistivity Polysilicon Resistor.
-
-Nodes: Between ra1 and qp2, connected to gnd.
-
-Parameter: l=30 → Resistor length = 30µm (resistance ∝ length).
-
-Used to generate voltage drops or temperature-dependent resistances in the circuit.
-
- ### 5️⃣ BJT (PNP Transistor) Definition
-```spice
-**bjt definition
-xqp1 gnd gnd qp1 gnd sky130_fd_pr__pnp_05v5_w3p40l3p40 m=1
-xqp2 gnd gnd qp2 gnd sky130_fd_pr__pnp_05v5_w3p40l3p40 m=8
-```
-xqp1, xqp2 are PNP BJTs used for CTAT and PTAT voltage generation.
-
-Model: sky130_fd_pr__pnp_05v5_w3p40l3p40 → 5V PNP transistor from SkyWater PDK.
-
-Node order: Collector → Base → Emitter → Substrate
-
-Parameters:
-
-m=1 → Single transistor (for base reference branch).
-
-m=8 → 8 parallel BJTs (used to adjust emitter area and current density).
-
-Increasing m improves matching and modifies Vbe slope for temperature compensation.
-
- ### 6️⃣ Vim Command
-```spice
-:wq
-```
-Saves (:w) and quits (:q) the file in Vim or GVim editor after writing the netlist.
+<img width="1027" height="647" alt="final complete crt" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/9a345d9e325a28c88f8ff0f23599597d076f9160/pics/final%20complete%20crt.png" />
 
 
-<img width="953" height="692" alt="Screenshot 2025-10-31 145732" src="https://github.com/user-attachments/assets/d3cd580a-22dc-4739-8d41-5de36279e459" />
 
-## 3.4.1 ⚙️ CTAT Simulation  
+## 3.4.1  CTAT Simulation  
 ### CTAT Voltage Generation with Single BJT Netlist
 
-#### 🧠 Theory  
+####  Theory  
 - A **BJT used as a diode** (by shorting its base and collector) produces a voltage that **decreases linearly with temperature**.  
 - When a **constant current source (10 µA)** flows through the BJT, the **base-emitter voltage (V_BE)** shows a **negative temperature coefficient** (typically −2 mV/°C).  
 - This negative slope of **V_BE vs. Temperature** represents the **CTAT characteristic**.
 
-#### ⚡ Circuit Setup  
+####  Circuit Setup  
 - **Device Used:** `sky130_fd_pr__pnp_05v5_w3p40l3p40`  
 - **Bias Current:** 10 µA (constant current source)  
 - **Output Measured:** Voltage across BJT (V_BE)   
 
-#### 🧾 Expected Output  
+####  Expected Output  
 A **straight line with a negative slope** in the **V_BE vs. Temperature** plot:  
 > As temperature increases → V_BE decreases → CTAT behavior confirmed ✅  
 
-#### 🖥️ Simulation Command  
-Open your terminal and navigate to the **prelayout** directory.  
-Run the following command to launch the simulation:
 
-```bash
-cd /workspaces/vsd-bandgap/bandgap/prelayout/
-ngspice ctat_voltage_gen.sp
-```
 
 After simulation we can get a wavefrom like below, and from the wavefrom we can see the CTAT behaviour of the BJT, and can find the slope.
 
-<img width="911" height="659" alt="Screenshot 2025-10-29 170822" src="https://github.com/user-attachments/assets/eaf920cc-0284-4cbc-ac74-c9c0dd8ae2f8" />
+<img width="911" height="659" alt="ctat crt result.png
+" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/386a181c6a5718a9c053b2ac9cefe59d88d2b788/pics/results/ctat%20crt%20result.png" />
 
-<img width="926" height="589" alt="Screenshot 2025-10-29 172431" src="https://github.com/user-attachments/assets/e4defc35-d568-459d-b876-5e8c0d4509ba" />
+
 
 ### CTAT Voltage generation with Multiple BJT netlist
 
 In this simulation we will check the CTAT voltage across the 8 parallel connected BJTs
-<img width="981" height="492" alt="Screenshot 2025-10-31 152650" src="https://github.com/user-attachments/assets/015da634-c3b7-43ae-9685-58a3b8af7e95" />
 
-<img width="1171" height="761" alt="Screenshot 2025-10-31 152525" src="https://github.com/user-attachments/assets/6dfb5edd-e29b-4de2-91f1-3f8e83a1ed72" />
+
+<img width="1171" height="761" alt="ctar crt result with multipel bjt" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/386a181c6a5718a9c053b2ac9cefe59d88d2b788/pics/results/ctar%20crt%20result%20with%20multipel%20bjt.png" />
 
 we can see the slope is increasing in case of multiple BJTs.
 
 ### CTAT Voltage generation with different current source values netlist
-<img width="945" height="737" alt="Screenshot 2025-10-29 173850" src="https://github.com/user-attachments/assets/5aa8fa5b-4063-4cc9-a154-9024c2f36fb9" />
+<img width="945" height="737" alt="ctat with variabel current " src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/efa588ab52ad45d6e491f80d98ba0fd075d69305/pics/results/ctat%20with%20variabel%20current%20.png" />
 
 ### 3.4.2  PTAT Simulation
 
 #### PTAT Voltage generation with VCVS
-<img width="1668" height="801" alt="Screenshot 2025-10-30 121222" src="https://github.com/user-attachments/assets/450abfb4-5814-45b1-b4b2-369d50996ab0" />
-## 3.4.3 ⚙️ Resistance Temperature Coefficient (Tempco)
+<img width="1668" height="801" alt="PTAT crt" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/18d6a615ceb38911106dda71ad8d2fff0e34aafe/pics/results/ptat1.png" />
 
-### 🧠 Theory  
-- A resistor has a **positive temperature coefficient**, meaning its resistance increases as temperature increases.  
-- When a constant current (10 µA) flows through the resistor, the voltage across it is given by:
+<img width="1668" height="801" alt="PTAT crt2" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/18d6a615ceb38911106dda71ad8d2fff0e34aafe/pics/results/ptat2.png" />
 
-  V_R = I × R(T)
 
-  where R(T) is the resistance that changes with temperature.  
-- As temperature rises, R(T) increases, so the voltage V_R also increases.  
-- Therefore, the voltage across the resistor behaves as a **PTAT voltage**.  
-- In a Bandgap Reference (BGR) circuit, this PTAT voltage adds to the thermal voltage from the BJT to cancel the CTAT behavior.
-
-  <img width="1594" height="669" alt="Screenshot 2025-10-31 153409" src="https://github.com/user-attachments/assets/62894e4b-dc09-4867-b6da-942f0fa2965e" />
-
-### 🖥️ Simulation Command
-```spice 
-cd /workspaces/vsd-bandgap/bandgap/prelayout/
-ngspice res_tempco.sp
-```
-Also we can find the PTAT voltages across the resistance for different current values from the following curve.
-<img width="847" height="706" alt="Screenshot 2025-10-31 171039" src="https://github.com/user-attachments/assets/ee692fff-3951-4e81-97c5-9390213c635b" />
 
 ### 3.4.4 BGR using Ideal OpAmp
 
@@ -588,7 +468,7 @@ Now after simulating all our components, let's quick check our BGR behaviour usi
 
 In this simulation, we should get the reference voltage as an **umbrella-shaped curve** and it should be approximately **1.2V**.
 ```spice
-*** bgr using ideal opamp (vcvs) *****
+*** Full BGR crt using ideal opamp (vcvs) *****
 
 .lib "/opt/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt"
 
@@ -658,15 +538,15 @@ plot v(ref)
 .endc
 .end
 ```
-<img width="849" height="729" alt="Screenshot 2025-10-30 135631" src="https://github.com/user-attachments/assets/5c92affc-e989-4db8-9814-97929159f43e" />
-<img width="926" height="486" alt="Screenshot 2025-10-30 135732" src="https://github.com/user-attachments/assets/8f676c81-5902-4239-89a9-0e23c9610bcd" />
-<img width="886" height="680" alt="Screenshot 2025-10-30 135839" src="https://github.com/user-attachments/assets/fac527cb-056a-4c4d-9a70-12d01c502d1c" />
-<img width="1595" height="693" alt="Screenshot 2025-10-30 140003" src="https://github.com/user-attachments/assets/c4a4627c-bf06-407b-9062-8cf72d657c42" />
-<img width="780" height="397" alt="Screenshot 2025-10-30 140140" src="https://github.com/user-attachments/assets/6cba83d9-dabc-4398-9eed-5fa986ca86bf" />
-<img width="910" height="677" alt="Screenshot 2025-10-30 140355" src="https://github.com/user-attachments/assets/04747cd3-fe1b-4d25-8a6a-4ade8f5e17c0" />
+<img width="849" height="729" alt="BGR_Ideal1" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/8262bed31f23bacdc71e3e677131178a26020b28/pics/results/BGR_Ideal1.png" />
+<img width="926" height="486" alt="BGR_Ideal2" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/8262bed31f23bacdc71e3e677131178a26020b28/pics/results/BGR_Ideal2.png" />
 
 ### 3.4.5 BGR with selfbias current mirror
 Now we will replace the ideal Op-Amp with self-biased current mirror which is our proposed design. We expect same type of output as in case of ideal OpAmp based BGR. We will also check for different corners, and will see how our circuit is performing in different corners. 
+
+
+
+
  ### tt corner stimulation
  ```spice
  **** bandgap reference circuit using self-biase current mirror *****
@@ -745,8 +625,10 @@ plot vid1#branch vid2#branch vid3#branch vid4#branch vid5#branch
 .endc
 .end
 ```
-<img width="1530" height="698" alt="Screenshot 2025-10-31 173959" src="https://github.com/user-attachments/assets/f10be323-9177-4953-a5e4-badaa7a12ef2" />
-<img width="861" height="663" alt="Screenshot 2025-10-31 174112" src="https://github.com/user-attachments/assets/94d77d82-baee-44ae-83d6-a4ea4626ffac" />
+<img width="1530" height="698" alt="bgr tt1" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/fc9133678516c799e57a4e3378b48a2d54655896/pics/results/bgr%20tt1.png" />
+
+<img width="1530" height="698" alt="bgr tt2" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/fc9133678516c799e57a4e3378b48a2d54655896/pics/results/bgr%20tt2.png" />
+
 Tempco. Of Vref = ~21.7 PPM
 
 ### Behaviour in FF corner
@@ -826,7 +708,9 @@ plot vid1#branch vid2#branch vid3#branch vid4#branch vid5#branch
 .endc
 .end
 `````
-<img width="799" height="698" alt="Screenshot 2025-10-30 150616" src="https://github.com/user-attachments/assets/19282c78-5c5c-411f-a69f-4e25440c206d" />
+<img width="799" height="698" alt="bgr ff1" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/ddd5f99614d7c82901366941ffb2a49987ace1eb/pics/results/bgr%20ff1.png" />
+
+<img width="799" height="698" alt="bgr ff2" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/ddd5f99614d7c82901366941ffb2a49987ace1eb/pics/results/bgr%20ff2.png" />
 
 Tempco. Of Vref = ~10 PPM
 ### Behaviour in ss corner
