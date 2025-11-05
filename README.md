@@ -38,9 +38,9 @@ At its core, the Bandgap Reference circuit works as follows:
 
 
    
-<img width="698" height="268" alt="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/tree/main" />
+<img width="698" height="268" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/f026dd55a7464016757ddc2009920c89f340cd93/pics/BGR_Block_diagram.png" />
 
-## ⚙️ Features of Bandgap Reference (BGR)
+##  Features of Bandgap Reference (BGR)
 
 - Temperature-independent voltage reference circuit widely used in Integrated Circuits (ICs).  
 - Produces a **constant output voltage** regardless of power supply variation, temperature changes, and circuit loading.  
@@ -49,7 +49,7 @@ At its core, the Bandgap Reference circuit works as follows:
 
 ---
 
-## 🧩 Applications of Bandgap Reference (BGR)
+##  Applications of Bandgap Reference (BGR)
 
 - **Low Dropout Regulators (LDOs)**  
 - **DC-to-DC Buck Converters**  
@@ -58,99 +58,22 @@ At its core, the Bandgap Reference circuit works as follows:
 
 ## 📚 Contents
 
-1. [Tool and PDK Setup](#1-tool-and-pdk-setup)  
-   1.1 [Tools Setup](#11-tools-setup)  
-   1.2 [PDK Setup](#12-pdk-setup)
 
-2. [Bandgap Reference (BGR) Introduction](#2-bandgap-reference-bgr-introduction)  
-   2.1 [BGR Principle](#21-bgr-principle)  
-   2.2 [Types of BGR](#22-types-of-bgr)  
-   2.3 [Self-Biased Current Mirror Based BGR](#23-self-biased-current-mirror-based-bgr)
+1. [Bandgap Reference (BGR) Introduction](#2-bandgap-reference-bgr-introduction)  
+   1.1 [BGR Principle](#21-bgr-principle)  
+   1.2 [Types of BGR](#22-types-of-bgr)  
+   1.3 [Self-Biased Current Mirror Based BGR](#23-self-biased-current-mirror-based-bgr)
 
-3. [Design and Pre-Layout Simulation](#3-design-and-pre-layout-simulation)
+2. [Design and Pre-Layout Simulation](#3-design-and-pre-layout-simulation)
 
-4. [Layout Design](#4-layout-design)
+3. [Layout Design](#4-layout-design)
 
-5. [LVS and Post-Layout Simulation](#5-lvs-and-post-layout-simulation)
+4. [LVS and Post-Layout Simulation](#5-lvs-and-post-layout-simulation)
 
-## 1. Tool and PDK Setup
-### 1.1 Tools Setup
 
-For the design, simulation, and verification of the Bandgap Reference (BGR) circuit, the following open-source EDA tools are used:
+## 1. BGR Introduction
 
----
-
-#### 🧪 Ngspice — Circuit Simulation
-**Ngspice** is an open-source SPICE-based simulator used for performing **analog circuit simulations**.  
-<img width="289" height="123" alt="Screenshot 2025-10-31 101341" src="https://github.com/user-attachments/assets/f4615124-2ed7-4b6a-b25b-c889e7c5b86f" />
-It takes a **SPICE netlist** as input, which describes the circuit components and their connections, and then computes electrical parameters such as node voltages, currents, and transfer characteristics.  
-In this project, Ngspice is used to:
-- Simulate the **schematic-level design** of the BGR circuit.  
-- Analyze **DC**, **AC**, and **transient** behavior.  
-- Verify **temperature dependence** and output voltage stability.
-
--Steps to install Ngspice - Open the terminal and type the following to install Ngspice
-```bash
-$  sudo apt-get install ngspice
-```
-
-#### 🧩 Magic — Layout Design and DRC
-**Magic** is a VLSI layout editor developed by Berkeley, primarily used for **IC layout design** in open-source PDKs such as **Sky130**.  
-It provides interactive tools for drawing transistors, interconnects, and layers according to process design rules.  
-Magic is used here to:
-- Create the **physical layout** of the BGR circuit.  
-- Perform **Design Rule Check (DRC)** to ensure the layout complies with the fabrication constraints of the Sky130 process.  
-- Extract the layout to generate a **SPICE netlist** for post-layout simulations.
-<img width="274" height="111" alt="Screenshot 2025-10-31 101451" src="https://github.com/user-attachments/assets/a78093f7-4b13-406b-b854-ec6c8117bc11" />
-
--Steps to install Magic - Open the terminal and type the following to install Magic
-```bash
-$  wget http://opencircuitdesign.com/magic/archive/magic-8.3.32.tgz
-$  tar xvfz magic-8.3.32.tgz
-$  cd magic-8.3.28
-$  ./configure
-$  sudo make
-$  sudo make install
-```
-
----
-
-#### 🔗 Netgen — LVS (Layout vs. Schematic)
-**Netgen** is a layout verification tool used for **Layout Versus Schematic (LVS)** comparison.  
-It compares the netlist extracted from the layout (using Magic) with the schematic netlist (used in Ngspice simulation) to verify connectivity and device matching.  
-A successful LVS ensures that the **layout accurately represents the schematic**, confirming the design’s electrical integrity before fabrication.
-
----<img width="284" height="103" alt="Screenshot 2025-10-31 101535" src="https://github.com/user-attachments/assets/8f03273d-ce0b-4531-81f3-4f387b05238d" />
-
--Steps to install Netgen - Open the terminal and type the following to insatll Netgen.
-```bash
-$  git clone git://opencircuitdesign.com/netgen
-$  cd netgen
-$  ./configure
-$  sudo make
-$  sudo make install 
-```
-
-In summary, these tools together provide a **complete open-source analog design flow** — from schematic simulation (Ngspice) → layout creation (Magic) → verification (Netgen).
-
-### 1.2 PDK Setup 
-
-The SkyWater **sky130** PDK provides process design data (layers, device rules, models) required for layout, extraction and simulation.  
-Below are typical steps to obtain and prepare the SkyWater-130 PDK on a Linux development environment.
-**Steps:**
-- Create a directory for the PDK.  
-- Clone the SkyWater PDK repository.  
-- Initialize submodules (if required).  
-- Build or install PDK libraries (optional).  
-- Set the PDK path so tools like Magic, Ngspice, and Netgen can locate it easily. 
-
-<img width="975" height="356" alt="Screenshot 2025-10-26 225127" src="https://github.com/user-attachments/assets/dd53a7e6-03a4-4d06-88a8-c8bf3c010cd1" />
-
-<img width="970" height="651" alt="Screenshot 2025-10-26 230151" src="https://github.com/user-attachments/assets/2b2cb94a-b2ef-4135-8f42-42a58acddaf4" />
-
-## 2. BGR Introduction
-
-### 2.1 BGR Principle
+### 1.1 BGR Principle
 
 The **Bandgap Reference (BGR)** circuit generates a temperature-independent reference voltage by combining two voltage components with **opposite temperature coefficients**.
 
@@ -176,11 +99,11 @@ The basic operation principle of a BGR circuit is to **sum a voltage with a nega
 #### ⚙️ Principle of Operation
 
 The BGR circuit operates by **adding** the CTAT and PTAT voltages in proper proportion so that the resulting voltage remains constant over temperature.
-####  2.1.1 CTAT VOLTAGE GENERATION
+####  1.1.1 CTAT VOLTAGE GENERATION
 Semiconductor diodes typically exhibit CTAT (Complementary to Absolute Temperature) behavior. When a constant current flows through a forward-biased diode, an increase in temperature causes the voltage across the diode to decrease. Experimentally, the rate of decrease of the diode’s forward voltage with temperature is approximately –2 mV/°C.
 <img width="825" height="295" alt="Screenshot 2025-10-31 114812" src="https://github.com/user-attachments/assets/37ece2d7-02f6-4462-9eb4-e0d2c31d0e94" />
 
-####  2.1.2 PTAT VOLTAGE GENERATION
+####  1.1.2 PTAT VOLTAGE GENERATION
 <img width="328" height="627" alt="Screenshot 2025-10-31 115134" src="https://github.com/user-attachments/assets/cde662c9-566f-4728-8542-b3e8e4a2aec4" />
 
 From the diode current equation, it can be observed that the diode voltage consists of two main temperature-dependent components:
@@ -212,7 +135,7 @@ To enhance the PTAT slope, multiple BJTs configured as diodes can be used in par
 
 
 
-#### 🧠 Summary
+####  Summary
 
 - **Diode / BJT junction** provides the **CTAT** component.  
 - **Difference in V<sub>BE</sub>** between transistors provides the **PTAT** component.  
@@ -222,7 +145,7 @@ To enhance the PTAT slope, multiple BJTs configured as diodes can be used in par
 
 📘 *In simple terms, the BGR circuit uses one voltage that decreases with temperature and another that increases with temperature — when added in the right ratio, the overall result stays constant.*
 
-### 2.2 Types of Bandgap Reference (BGR)
+### 1.2 Types of Bandgap Reference (BGR)
 
 The **Bandgap Reference (BGR)** circuit can be classified in different ways depending on its **circuit architecture** and **application requirements**.
 
@@ -255,12 +178,12 @@ Depending on design goals and target specifications, BGR circuits can be categor
 
 ---
 
-#### 🧠 Our Design Choice
+####  Our Design Choice
 
 In this project, we implement the **Bandgap Reference (BGR)** circuit using a **Self-Biased Current Mirror Architecture**,  
 as it provides a good balance between **simplicity**, **power efficiency**, and **temperature stability** for integrated circuit applications.
 
-### 2.3 Self-Biased Current Mirror Based BGR
+### 1.3 Self-Biased Current Mirror Based BGR
 The **Self-Biased Current Mirror Based Bandgap Reference (BGR)** circuit is composed of several functional sub-blocks that together generate a stable, temperature-independent reference voltage.
 
 ---
@@ -280,18 +203,18 @@ The **Self-Biased Current Mirror Based Bandgap Reference (BGR)** circuit is comp
    Combines the PTAT and CTAT voltages to generate a constant reference voltage.
 
 5. **Start-Up Circuit**  
-### 2.3.1 CTAT Voltage Generation Circuit
+### 1.3.1 CTAT Voltage Generation Circuit
 <img width="222" height="292" alt="Screenshot 2025-10-31 120511" src="https://github.com/user-attachments/assets/f81c739d-d139-4442-9e03-85e1de35a908" />
 
-### 2.3.2 PTAT Voltage Generation Circuit
+### 1.3.2 PTAT Voltage Generation Circuit
 <img width="487" height="488" alt="Screenshot 2025-10-31 120612" src="https://github.com/user-attachments/assets/03a0037b-3e24-4529-837d-b01bb89097ca" />
 
-### 2.3.3 Self-Biased Current Mirror Circuit
+### 1.3.3 Self-Biased Current Mirror Circuit
 
 The **Self-Biased Current Mirror** is a special type of current mirror that does **not require any external biasing source**.  
 Instead, it **automatically establishes its own bias current** through internal feedback, achieving a stable operating point without relying on an external reference.
 
-#### ⚙️ Working Principle
+####  Working Principle
 
 In a self-biased current mirror, the **bias current** is generated internally by the circuit configuration itself.  
 This is typically achieved using **transistor feedback loops**, where one branch sets the reference voltage or current, and the mirror branch replicates it.
@@ -300,14 +223,14 @@ The circuit adjusts itself until the **voltages and currents stabilize** at a de
 This eliminates the need for an external current reference, making the design **compact, power-efficient, and self-sufficient**.
 <img width="447" height="376" alt="Screenshot 2025-10-31 120810" src="https://github.com/user-attachments/assets/1d49e411-6297-44c1-a7b0-9ba2fd790ab9" />
 ---
-### 2.3.4 Reference Branch Circuit
+### 1.3.4 Reference Branch Circuit
 
 The **Reference Branch Circuit** is the core part of the Bandgap Reference (BGR) that performs the **addition of CTAT and PTAT voltages** to produce the final **constant reference voltage**.
 
 This branch typically consists of a **mirror transistor** and a **BJT configured as a diode**.  
 The mirror transistor ensures that the **same current** flowing through the current mirror branches also flows through the reference branch, maintaining bias symmetry across the circuit.
 
-#### ⚙️ Working Principle
+####  Working Principle
 
 From the **PTAT generation circuit**, we obtain a **PTAT voltage** and a **PTAT current**.  
 This PTAT current is mirrored into the reference branch, where it flows through a **resistor** connected in series with the **CTAT diode**.
@@ -319,11 +242,11 @@ As a result, the total output voltage across the resistor becomes the **sum of t
 <img width="168" height="487" alt="Screenshot 2025-10-31 122920" src="https://github.com/user-attachments/assets/77e86414-5d1f-42a8-8b0f-2a0c96c72d2b" />
 ---
 
-### 2.3.5 Start-up Circuit
+### 1.3.5 Start-up Circuit
 
 The **Start-up Circuit** is an essential part of the Bandgap Reference (BGR) design that ensures the **self-biased current mirror** starts operating correctly from power-up.
 
-#### ⚙️ Function
+####  Function
 
 In self-biased current mirrors, there exists a **degenerative bias point** where the circuit can settle into an **unwanted zero-current state**.  
 Without intervention, the mirror could remain in this state indefinitely, preventing the circuit from reaching its intended operating condition.
@@ -336,13 +259,13 @@ Once the circuit begins to conduct, the **self-biasing mechanism** of the curren
 
 <img width="652" height="548" alt="Screenshot 2025-10-31 123141" src="https://github.com/user-attachments/assets/0367290b-ed4e-469e-bb0e-2898c3b3a790" />
 
-### 2.3.6 Complete BGR Circuit
+### 1.3.6 Complete BGR Circuit
 
 By combining all the previously discussed building blocks, we can construct the **Complete Bandgap Reference (BGR) Circuit**.
 
 ---
 
-#### ⚙️ Circuit Composition
+####  Circuit Composition
 
 The complete BGR circuit integrates the following components:
 
@@ -354,7 +277,7 @@ The complete BGR circuit integrates the following components:
 
 ---
 
-#### 🧩 Working Principle
+####  Working Principle
 
 - The **CTAT** and **PTAT** voltages are carefully scaled and summed to achieve a **temperature-stable output voltage**.  
 - The **current mirror** maintains proper biasing across all branches.  
@@ -364,20 +287,20 @@ Together, these components form a **fully functional Bandgap Reference circuit**
 
 <img width="940" height="612" alt="Screenshot 2025-10-31 123818" src="https://github.com/user-attachments/assets/dc1935a4-7a6e-4256-a452-1da815851cf2" />
 
-#### ✅ Advantages of SBCM BGR
+####  Advantages of SBCM BGR
 
 - **Simplest Topology:** The circuit structure is straightforward, making it easy to implement.  
 - **Ease of Design:** Requires fewer components and has a simpler biasing mechanism compared to op-amp-based BGRs.  
 - **Always Stable:** The self-biasing mechanism ensures a stable operating point once the circuit starts.  
 
-#### ⚠️ Limitations of SBCM BGR
+####  Limitations of SBCM BGR
 
 - **Low Power Supply Rejection Ratio (PSRR):** More sensitive to supply voltage fluctuations.  
 - **Cascode Design Required:** A cascode structure may be added to improve PSRR performance.  
 - **Voltage Headroom Issue:** Limited voltage swing can affect proper operation in low-voltage designs.  
 - **Requires Start-up Circuit:** Essential to prevent the circuit from remaining in the zero-current state.
 
-## 3. Design and Pre-layout Simulation
+## 2. Design and Pre-layout Simulation
 
 For the practical implementation of the Bandgap Reference (BGR) circuit, the **SkyWater SKY130 (130 nm)** PDK is used.  
 Before designing the complete circuit, we must first define the **design requirements** that our circuit should meet.
