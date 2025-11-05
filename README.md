@@ -61,7 +61,7 @@ At its core, the Bandgap Reference circuit works as follows:
 
 ## 1. BGR Introduction
 
-### 1.1 BGR Principle
+###  BGR Principle
 
 The **Bandgap Reference (BGR)** circuit generates a temperature-independent reference voltage by combining two voltage components with **opposite temperature coefficients**.
 
@@ -91,7 +91,7 @@ The BGR circuit operates by **adding** the CTAT and PTAT voltages in proper prop
 Semiconductor diodes typically exhibit CTAT (Complementary to Absolute Temperature) behavior. When a constant current flows through a forward-biased diode, an increase in temperature causes the voltage across the diode to decrease. Experimentally, the rate of decrease of the diode’s forward voltage with temperature is approximately –2 mV/°C.
 <img width="825" height="295" alt="Ctat_voltage_refrence.png" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/da134f785f6b11f14e572c1e48f8ba0d185e4295/pics/Ctat_voltage_refrence.png" />
 
-####  1.1.2 PTAT VOLTAGE GENERATION
+####   PTAT VOLTAGE GENERATION
 
 From the diode current equation, it can be observed that the diode voltage consists of two main temperature-dependent components:
 
@@ -130,7 +130,7 @@ To enhance the PTAT slope, multiple BJTs configured as diodes can be used in par
 
  *In simple terms, the BGR circuit uses one voltage that decreases with temperature and another that increases with temperature — when added in the right ratio, the overall result stays constant.*
 
-### 1.2 Types of Bandgap Reference (BGR)
+###  Types of Bandgap Reference (BGR)
 
 The **Bandgap Reference (BGR)** circuit can be classified in different ways depending on its **circuit architecture** and **application requirements**.
 
@@ -168,7 +168,7 @@ Depending on design goals and target specifications, BGR circuits can be categor
 In this project, we implement the **Bandgap Reference (BGR)** circuit using a **Self-Biased Current Mirror Architecture**,  
 as it provides a good balance between **simplicity**, **power efficiency**, and **temperature stability** for integrated circuit applications.
 
-### 1.3 Self-Biased Current Mirror Based BGR
+###  Self-Biased Current Mirror Based BGR
 The **Self-Biased Current Mirror Based Bandgap Reference (BGR)** circuit is composed of several functional sub-blocks that together generate a stable, temperature-independent reference voltage.
 
 ---
@@ -189,7 +189,7 @@ The **Self-Biased Current Mirror Based Bandgap Reference (BGR)** circuit is comp
 
 5. **Start-Up Circuit**  
 
-### 1.3.1 Self-Biased Current Mirror Circuit
+###  Self-Biased Current Mirror Circuit
 
 The **Self-Biased Current Mirror** is a special type of current mirror that does **not require any external biasing source**.  
 Instead, it **automatically establishes its own bias current** through internal feedback, achieving a stable operating point without relying on an external reference.
@@ -205,7 +205,7 @@ This eliminates the need for an external current reference, making the design **
 <img width="447" height="376" alt="current mirror crt" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/3f86218091d99f0077bcf6940e3a00a25be8aeb6/pics/current%20mirror%20crt.png" />
 
 ---
-### 1.3.2 Reference Branch Circuit
+###  Reference Branch Circuit
 
 The **Reference Branch Circuit** is the core part of the Bandgap Reference (BGR) that performs the **addition of CTAT and PTAT voltages** to produce the final **constant reference voltage**.
 
@@ -225,7 +225,7 @@ As a result, the total output voltage across the resistor becomes the **sum of t
 
 ---
 
-### 1.3.5 Start-up Circuit
+###  Start-up Circuit
 
 The **Start-up Circuit** is an essential part of the Bandgap Reference (BGR) design that ensures the **self-biased current mirror** starts operating correctly from power-up.
 
@@ -242,7 +242,7 @@ Once the circuit begins to conduct, the **self-biasing mechanism** of the curren
 
 
 
-### 1.3.6 Complete BGR Circuit
+###  Complete BGR Circuit
 
 By combining all the previously discussed building blocks, we can construct the **Complete Bandgap Reference (BGR) Circuit**.
 <img width="940" height="612" alt="complete BGR" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/284eff7aac6c6604e194f354c6edd10a1b684e97/pics/complete%20BGR.png" />
@@ -253,11 +253,11 @@ By combining all the previously discussed building blocks, we can construct the 
 
 The complete BGR circuit integrates the following components:
 
-1. **CTAT Voltage Generation Circuit** — provides a voltage that decreases with temperature using a BJT diode.  
-2. **PTAT Voltage Generation Circuit** — produces a voltage that increases with temperature using resistors and matched BJTs.  
-3. **Self-Biased Current Mirror Circuit** — establishes and maintains stable current levels without the need for external biasing.  
-4. **Reference Branch Circuit** — sums the CTAT and PTAT components to generate the temperature-independent reference voltage.  
-5. **Start-up Circuit** — ensures the self-biased current mirror starts correctly by eliminating the zero-current operating point.
+- **CTAT Voltage Generation Circuit** — provides a voltage that decreases with temperature using a BJT diode.  
+- **PTAT Voltage Generation Circuit** — produces a voltage that increases with temperature using resistors and matched BJTs.  
+- **Self-Biased Current Mirror Circuit** — establishes and maintains stable current levels without the need for external biasing.  
+- **Reference Branch Circuit** — sums the CTAT and PTAT components to generate the temperature-independent reference voltage.  
+- **Start-up Circuit** — ensures the self-biased current mirror starts correctly by eliminating the zero-current operating point.
 
 ---
 
@@ -291,7 +291,7 @@ Before designing the complete circuit, we must first define the **design require
 
 ---
 
-### 2.1 Design Requirements
+###  Design Requirements
 
 | Parameter | Specification |
 |------------|----------------|
@@ -304,7 +304,7 @@ Before designing the complete circuit, we must first define the **design require
 
 ---
 
-### 2.2 Device Data Sheet
+###  Device Data Sheet
 
 #### 1. MOSFET
 
@@ -317,7 +317,7 @@ Before designing the complete circuit, we must first define the **design require
 
 ---
 
-#### 2. Bipolar Junction Transistor (PNP)
+####  Bipolar Junction Transistor (PNP)
 
 | Parameter | PNP |
 |------------|------|
@@ -328,7 +328,7 @@ Before designing the complete circuit, we must first define the **design require
 
 ---
 
-#### 3. Resistor (RPOLYH)
+####  Resistor (RPOLYH)
 
 | Parameter | RPOLYH |
 |------------|----------|
@@ -339,7 +339,7 @@ Before designing the complete circuit, we must first define the **design require
 
 ---
 
-### 3.3 Circuit Design
+###  Circuit Design
 
 #### 1. Current Calculation
 
@@ -410,12 +410,12 @@ Resistor implementation: 16 in series and 2 in parallel (2 + 2 + … + 2 + (2‖
 - Final size: L = 1 µm, W = 5 µm, M = 8  
 
 ---
-### 3.3.1 Final Circuit
+###  Final Circuit
 <img width="1027" height="647" alt="final complete crt" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/9a345d9e325a28c88f8ff0f23599597d076f9160/pics/final%20complete%20crt.png" />
 
 
 
-## 3.4.1  CTAT Simulation  
+##   CTAT Simulation  
 ### CTAT Voltage Generation with Single BJT Netlist
 
 ####  Theory  
@@ -453,7 +453,7 @@ we can see the slope is increasing in case of multiple BJTs.
 ### CTAT Voltage generation with different current source values netlist
 <img width="945" height="737" alt="ctat with variabel current " src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/efa588ab52ad45d6e491f80d98ba0fd075d69305/pics/results/ctat%20with%20variabel%20current%20.png" />
 
-### 3.4.2  PTAT Simulation
+###   PTAT Simulation
 
 #### PTAT Voltage generation with VCVS
 <img width="1668" height="801" alt="PTAT crt" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/18d6a615ceb38911106dda71ad8d2fff0e34aafe/pics/results/ptat1.png" />
@@ -462,7 +462,7 @@ we can see the slope is increasing in case of multiple BJTs.
 
 
 
-### 3.4.4 BGR using Ideal OpAmp
+###  BGR using Ideal OpAmp
 
 Now after simulating all our components, let's quick check our BGR behaviour using one **VCVS** as an **ideal OpAmp**.
 
@@ -541,7 +541,7 @@ plot v(ref)
 <img width="849" height="729" alt="BGR_Ideal1" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/8262bed31f23bacdc71e3e677131178a26020b28/pics/results/BGR_Ideal1.png" />
 <img width="926" height="486" alt="BGR_Ideal2" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/8262bed31f23bacdc71e3e677131178a26020b28/pics/results/BGR_Ideal2.png" />
 
-### 3.4.5 BGR with selfbias current mirror
+###  BGR with selfbias current mirror
 Now we will replace the ideal Op-Amp with self-biased current mirror which is our proposed design. We expect same type of output as in case of ideal OpAmp based BGR. We will also check for different corners, and will see how our circuit is performing in different corners. 
 
 
@@ -804,71 +804,17 @@ We are going to use the **Magic VLSI tool** for our layout design.
 
 ---
 
-### 4.1 Getting Started with Magic
-
-**Magic** is an open-source **VLSI layout editor** used to design, edit, and verify integrated circuit layouts.
-
-#### 🧭 To launch Magic, open your terminal and run the following command:
-
-<img width="947" height="387" alt="Screenshot 2025-10-31 181207" src="https://github.com/user-attachments/assets/6cd24eb2-8089-404f-82d8-780a6b3eea2a" />
-
-Now it will open up two windows, those are tkcon.tcl and toplevel. Now let's discuss some basic magic tool operations.
-```bash
-g : grid on/off
-z : zoom in
-Shift + z : zoom out
-
-Draw a box : 
-  1. Left click + Right click of the mouse : pointer will be at a grid point
-  2. Right click : a blank box will be created from the pointed point to the point where right click occured
- 
-Fill a box with a layer:
-  1. Draw a box
-  2. Select a layer from the tool manager
-  3. Middle click the mouse button
-  
-  or 
-  
-  1. Draw a box
-  2. Write "paint <layer name>" in the tkcon.tcl window
 
 
-Delete a layer:
-  1. Draw a box where you want to delete a layer
-  2. Write "erase <layer name>" in the tkcon.tcl window
- 
-Delete an area:
-  1. Draw a box where you want to delete an area
-  2. Press 'a'
-  3. Press 'd'
 
-u : undo
-r : rotate
-m : move
-c : copy
-```
-Now device wise we have the following devices in our circuit.
+##  Blocks Design
 
-PFETS
-NFETS
-Resistor Bank
-BJTs
-Now in order to design faster we should follow the hierarchical design manner. i.e we will design one cell then we will instance that to another level and do placement and routing.
-
-In our design we have 3 hierarchies. Those are
-
-Hierarchy-1 (Basic Cells) : NFET, PFET, BJT, Resistor
-Hierarchy-2 (Blocks of similar cells): NFETS, PFETS, PNP10, RESBANK, STARTERNFET
-Hierarchy-3 (Top Level): TOP
-
-## 4.2 Blocks Design
-
-### 4.2.1 Design of NFETs
+###  Design of NFETs
 
 We have designed the **NFET layout** by placing all the transistors in a single well-defined region to ensure proper matching and compactness.  
 The layout is carefully optimized to maintain **symmetry**, **matching accuracy**, and **noise immunity**.
 
-#### ⚙️ Design Details:
+####  Design Details:
 1. **Common Centroid Matching:**  
    - All NFETs are placed following the **common centroid** technique to minimize mismatch due to process gradients.  
    - This helps in achieving balanced electrical characteristics across devices.
@@ -891,14 +837,14 @@ The layout is carefully optimized to maintain **symmetry**, **matching accuracy*
 ``` bash
 @chandranshu24-hue ➜ /workspaces/vsd-bandgap/bandgap/layout (main) $ magic -T sky130A.tech  nfets.mag
 ```
-<img width="1217" height="740" alt="Screenshot 2025-10-31 002351" src="https://github.com/user-attachments/assets/eecfadfc-acda-40c4-9be8-7af5c9211610" />
+<img width="1217" height="740" alt="NFETS" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/7343661f156ccdb7f8250aa00120981e5913610a/pics/results/nfets.png" />
 
-### 4.2.2 Design of PFETs
+###  Design of PFETs
 
 We have designed the **PFET layout block** by grouping all PFETs together in a symmetric and well-matched arrangement.  
 The layout emphasizes **device matching**, **isolation**, and **robustness against noise** to ensure accurate current mirroring and stable biasing.
 
-#### ⚙️ Design Details:
+####  Design Details:
 1. **Matching Arrangement:**  
    - All PFETs are placed in a **symmetrical array** using a **common centroid pattern** to reduce gradient-induced mismatches.  
    - Ensures that variations in oxide thickness or dopant concentration are evenly distributed across all devices.
@@ -917,12 +863,13 @@ The layout emphasizes **device matching**, **isolation**, and **robustness again
 5. **Orientation Consistency:**  
    - All gates are aligned in the same direction for uniform channel characteristics and ease of routing.
 
-<img width="1236" height="667" alt="Screenshot 2025-10-31 002058" src="https://github.com/user-attachments/assets/01a4db12-5f16-4f17-95ee-1536df0de05f" />
+<img width="1217" height="740" alt="pfets" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/7343661f156ccdb7f8250aa00120981e5913610a/pics/results/pfets.png" />
 
-### 4.2.3 Design of RESBANK
-<img width="1182" height="752" alt="Screenshot 2025-10-31 001816" src="https://github.com/user-attachments/assets/949707f0-c7f4-48fe-9b7b-95fca120175d" />
+###  Design of RESBANK
+<img width="1182" height="752" alt="resbank1" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/7343661f156ccdb7f8250aa00120981e5913610a/pics/results/resbank1.png" />
+<img width="1182" height="752" alt="resbankk2" src="https://github.com/bharathmr1012/Bharath_Bandgap_workshop/blob/7343661f156ccdb7f8250aa00120981e5913610a/pics/results/resbank2.png" />
 
-### 4.2.4 Design of PNP10
+###  Design of PNP10
 We have created the layout by putting all the PNPs together, with appropriate matching, and used dummies to enhance noise performance.
 <img width="1196" height="690" alt="Screenshot 2025-10-31 003055" src="https://github.com/user-attachments/assets/e20f8fd8-f41c-48ee-bada-b260c337d161" />
 
